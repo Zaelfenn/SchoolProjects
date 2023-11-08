@@ -1,0 +1,714 @@
+
+Final Proj CST120.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  0000040a  0000049e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000040a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000008  0080010c  0080010c  000004aa  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004aa  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000004dc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000030  00000000  00000000  0000051c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000008dc  00000000  00000000  0000054c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000705  00000000  00000000  00000e28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000463  00000000  00000000  0000152d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000088  00000000  00000000  00001990  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000044f  00000000  00000000  00001a18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000030a  00000000  00000000  00001e67  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000038  00000000  00000000  00002171  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 a9 01 	jmp	0x352	; 0x352 <__vector_14>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 71 01 	jmp	0x2e2	; 0x2e2 <__vector_16>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea e0       	ldi	r30, 0x0A	; 10
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ac e0       	ldi	r26, 0x0C	; 12
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a4 31       	cpi	r26, 0x14	; 20
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 53 00 	call	0xa6	; 0xa6 <main>
+  9e:	0c 94 03 02 	jmp	0x406	; 0x406 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <main>:
+int toneDone = 0; //flag for when the tone should stop
+
+
+
+int main(void)
+{
+  a6:	cf 93       	push	r28
+  a8:	df 93       	push	r29
+  aa:	cd b7       	in	r28, 0x3d	; 61
+  ac:	de b7       	in	r29, 0x3e	; 62
+  ae:	a4 97       	sbiw	r28, 0x24	; 36
+  b0:	0f b6       	in	r0, 0x3f	; 63
+  b2:	f8 94       	cli
+  b4:	de bf       	out	0x3e, r29	; 62
+  b6:	0f be       	out	0x3f, r0	; 63
+  b8:	cd bf       	out	0x3d, r28	; 61
+	DDRD = (1 << DDD2) | (1 << DDD3) | (1 << DDD4) | (1 << DDD5) | (1 << DDD7); //set all these bits for output, allowing LEDs(ports 2,3,4,5) to shine and the buzzer to buzz
+  ba:	8c eb       	ldi	r24, 0xBC	; 188
+  bc:	8a b9       	out	0x0a, r24	; 10
+	//these will be the computer lights
+	
+	DDRB =  (1 << DDB0) | (1 << DDB1) | (1 << DDB2) | (1 << DDB3); //set all these bits for output, allowing LEDs(ports 0,1,2,3) to shine
+  be:	8f e0       	ldi	r24, 0x0F	; 15
+  c0:	84 b9       	out	0x04, r24	; 4
+	//these will be the player lights
+	
+	
+	PORTD = (1 << PORTD6); //button pullup resistor on portb0 (digital pin 8)
+  c2:	80 e4       	ldi	r24, 0x40	; 64
+  c4:	8b b9       	out	0x0b, r24	; 11
+	
+	TCNT0 = 0; //initialize timer 0
+  c6:	16 bc       	out	0x26, r1	; 38
+	
+	TIMSK0 = ((1 << OCIE0A) | (1 << TOIE0)); //enable interrupts on timer compare A and timer overflow
+  c8:	83 e0       	ldi	r24, 0x03	; 3
+  ca:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
+	sei(); //enable global interrupts
+  ce:	78 94       	sei
+	
+	OCR0A = 89; //the note to play on the buzzer
+  d0:	89 e5       	ldi	r24, 0x59	; 89
+  d2:	87 bd       	out	0x27, r24	; 39
+	
+	TCCR0B = 4; //start timer 4 in normal mode w/ prescaler of 256
+  d4:	84 e0       	ldi	r24, 0x04	; 4
+  d6:	85 bd       	out	0x25, r24	; 37
+	
+	ADCSRA = (1 << ADEN) | (7 << ADPS0) | (1 << ADATE); //enable ADC (1 to ADEN), set the prescaler to 128 (7 to ADPS0)
+  d8:	ea e7       	ldi	r30, 0x7A	; 122
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	87 ea       	ldi	r24, 0xA7	; 167
+  de:	80 83       	st	Z, r24
+	//and set the ADC to auto trigger enable/free running mode (1 to ADATE)
+	
+	ADMUX = (0 << MUX0) | (1 << REFS0) | (1 << ADLAR); //connect ADC to analog pin 0 (0 << MUX0), enable AVCC(1 to REFS0), 
+  e0:	80 e6       	ldi	r24, 0x60	; 96
+  e2:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	//and left adjust value of the bits in the register (1 to ADLAR)
+	
+	ADCSRA |= (1 << ADSC); //start the conversions!
+  e6:	80 81       	ld	r24, Z
+  e8:	80 64       	ori	r24, 0x40	; 64
+  ea:	80 83       	st	Z, r24
+	
+	
+	uint8_t colors[6] = {RED,BLUE,GREEN,YELLOW,RED,GREEN}; //these are the possible colors for the LED to display, with a bias against blue and yellow because 4 is difficult to create
+  ec:	86 e0       	ldi	r24, 0x06	; 6
+  ee:	e5 e0       	ldi	r30, 0x05	; 5
+  f0:	f1 e0       	ldi	r31, 0x01	; 1
+  f2:	de 01       	movw	r26, r28
+  f4:	11 96       	adiw	r26, 0x01	; 1
+  f6:	01 90       	ld	r0, Z+
+  f8:	0d 92       	st	X+, r0
+  fa:	8a 95       	dec	r24
+  fc:	e1 f7       	brne	.-8      	; 0xf6 <main+0x50>
+		//patterns that incorporate all 4 LEDs and 6 is a fun number
+	uint8_t compPattern[30]; //there will be 30 colors in the computers pattern
+	
+	for (int i = 0; i < 30; i++){ //set all the computers pattern to 0
+  fe:	80 e0       	ldi	r24, 0x00	; 0
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+ 102:	08 c0       	rjmp	.+16     	; 0x114 <main+0x6e>
+		compPattern[i] = 0;
+ 104:	e7 e0       	ldi	r30, 0x07	; 7
+ 106:	f0 e0       	ldi	r31, 0x00	; 0
+ 108:	ec 0f       	add	r30, r28
+ 10a:	fd 1f       	adc	r31, r29
+ 10c:	e8 0f       	add	r30, r24
+ 10e:	f9 1f       	adc	r31, r25
+ 110:	10 82       	st	Z, r1
+	
+	uint8_t colors[6] = {RED,BLUE,GREEN,YELLOW,RED,GREEN}; //these are the possible colors for the LED to display, with a bias against blue and yellow because 4 is difficult to create
+		//patterns that incorporate all 4 LEDs and 6 is a fun number
+	uint8_t compPattern[30]; //there will be 30 colors in the computers pattern
+	
+	for (int i = 0; i < 30; i++){ //set all the computers pattern to 0
+ 112:	01 96       	adiw	r24, 0x01	; 1
+ 114:	8e 31       	cpi	r24, 0x1E	; 30
+ 116:	91 05       	cpc	r25, r1
+ 118:	ac f3       	brlt	.-22     	; 0x104 <main+0x5e>
+	while (1) 
+    {
+		int done = 0;
+		int playerCount = 0; //the number of colors that the player has inputted
+		int reset = 0;
+		int r = (numColor * numColor * numColor) % 6; //predictable generated pattern yet still a bit complex
+ 11a:	20 91 03 01 	lds	r18, 0x0103	; 0x800103 <numColor>
+ 11e:	30 91 04 01 	lds	r19, 0x0104	; 0x800104 <numColor+0x1>
+ 122:	22 9f       	mul	r18, r18
+ 124:	a0 01       	movw	r20, r0
+ 126:	23 9f       	mul	r18, r19
+ 128:	50 0d       	add	r21, r0
+ 12a:	50 0d       	add	r21, r0
+ 12c:	11 24       	eor	r1, r1
+ 12e:	24 9f       	mul	r18, r20
+ 130:	c0 01       	movw	r24, r0
+ 132:	25 9f       	mul	r18, r21
+ 134:	90 0d       	add	r25, r0
+ 136:	34 9f       	mul	r19, r20
+ 138:	90 0d       	add	r25, r0
+ 13a:	11 24       	eor	r1, r1
+ 13c:	66 e0       	ldi	r22, 0x06	; 6
+ 13e:	70 e0       	ldi	r23, 0x00	; 0
+ 140:	0e 94 db 01 	call	0x3b6	; 0x3b6 <__divmodhi4>
+		compPattern[numColor - 1] = colors[r]; //set the next color in the pattern 
+ 144:	21 50       	subi	r18, 0x01	; 1
+ 146:	31 09       	sbc	r19, r1
+ 148:	e1 e0       	ldi	r30, 0x01	; 1
+ 14a:	f0 e0       	ldi	r31, 0x00	; 0
+ 14c:	ec 0f       	add	r30, r28
+ 14e:	fd 1f       	adc	r31, r29
+ 150:	e8 0f       	add	r30, r24
+ 152:	f9 1f       	adc	r31, r25
+ 154:	80 81       	ld	r24, Z
+ 156:	e7 e0       	ldi	r30, 0x07	; 7
+ 158:	f0 e0       	ldi	r31, 0x00	; 0
+ 15a:	ec 0f       	add	r30, r28
+ 15c:	fd 1f       	adc	r31, r29
+ 15e:	e2 0f       	add	r30, r18
+ 160:	f3 1f       	adc	r31, r19
+ 162:	80 83       	st	Z, r24
+		
+		for (int i = 0; i < numColor; i++){
+ 164:	20 e0       	ldi	r18, 0x00	; 0
+ 166:	30 e0       	ldi	r19, 0x00	; 0
+ 168:	27 c0       	rjmp	.+78     	; 0x1b8 <main+0x112>
+			PORTD |= (compPattern[i] << PORTD2); //display the corresponding LED with the pattern
+ 16a:	4b b1       	in	r20, 0x0b	; 11
+ 16c:	e7 e0       	ldi	r30, 0x07	; 7
+ 16e:	f0 e0       	ldi	r31, 0x00	; 0
+ 170:	ec 0f       	add	r30, r28
+ 172:	fd 1f       	adc	r31, r29
+ 174:	e2 0f       	add	r30, r18
+ 176:	f3 1f       	adc	r31, r19
+ 178:	90 81       	ld	r25, Z
+ 17a:	89 2f       	mov	r24, r25
+ 17c:	90 e0       	ldi	r25, 0x00	; 0
+ 17e:	88 0f       	add	r24, r24
+ 180:	99 1f       	adc	r25, r25
+ 182:	88 0f       	add	r24, r24
+ 184:	99 1f       	adc	r25, r25
+ 186:	84 2b       	or	r24, r20
+ 188:	8b b9       	out	0x0b, r24	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 18a:	4f ef       	ldi	r20, 0xFF	; 255
+ 18c:	89 e6       	ldi	r24, 0x69	; 105
+ 18e:	98 e1       	ldi	r25, 0x18	; 24
+ 190:	41 50       	subi	r20, 0x01	; 1
+ 192:	80 40       	sbci	r24, 0x00	; 0
+ 194:	90 40       	sbci	r25, 0x00	; 0
+ 196:	e1 f7       	brne	.-8      	; 0x190 <main+0xea>
+ 198:	00 c0       	rjmp	.+0      	; 0x19a <main+0xf4>
+ 19a:	00 00       	nop
+			_delay_ms(500); //small delay for each color
+			PORTD &= ~(0xF << PORTD2); //clear the LEDs while not messing with the other bits
+ 19c:	8b b1       	in	r24, 0x0b	; 11
+ 19e:	83 7c       	andi	r24, 0xC3	; 195
+ 1a0:	8b b9       	out	0x0b, r24	; 11
+ 1a2:	4f ef       	ldi	r20, 0xFF	; 255
+ 1a4:	84 e3       	ldi	r24, 0x34	; 52
+ 1a6:	9c e0       	ldi	r25, 0x0C	; 12
+ 1a8:	41 50       	subi	r20, 0x01	; 1
+ 1aa:	80 40       	sbci	r24, 0x00	; 0
+ 1ac:	90 40       	sbci	r25, 0x00	; 0
+ 1ae:	e1 f7       	brne	.-8      	; 0x1a8 <main+0x102>
+ 1b0:	00 c0       	rjmp	.+0      	; 0x1b2 <main+0x10c>
+ 1b2:	00 00       	nop
+		int playerCount = 0; //the number of colors that the player has inputted
+		int reset = 0;
+		int r = (numColor * numColor * numColor) % 6; //predictable generated pattern yet still a bit complex
+		compPattern[numColor - 1] = colors[r]; //set the next color in the pattern 
+		
+		for (int i = 0; i < numColor; i++){
+ 1b4:	2f 5f       	subi	r18, 0xFF	; 255
+ 1b6:	3f 4f       	sbci	r19, 0xFF	; 255
+ 1b8:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <numColor>
+ 1bc:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <numColor+0x1>
+ 1c0:	28 17       	cp	r18, r24
+ 1c2:	39 07       	cpc	r19, r25
+ 1c4:	94 f2       	brlt	.-92     	; 0x16a <main+0xc4>
+ 1c6:	60 e0       	ldi	r22, 0x00	; 0
+ 1c8:	70 e0       	ldi	r23, 0x00	; 0
+ 1ca:	20 e0       	ldi	r18, 0x00	; 0
+ 1cc:	30 e0       	ldi	r19, 0x00	; 0
+ 1ce:	40 e0       	ldi	r20, 0x00	; 0
+ 1d0:	50 e0       	ldi	r21, 0x00	; 0
+ 1d2:	79 c0       	rjmp	.+242    	; 0x2c6 <main+0x220>
+			PORTD &= ~(0xF << PORTD2); //clear the LEDs while not messing with the other bits
+			_delay_ms(250); //small delay for the clear
+		}
+		while(!done){ //while not done, which is also set upon a reset
+			int colorValue = GREEN; //default value of green (ADCH 0 - 64)
+			while(!(ADCSRA & (1 << ADIF))); //wait for the ADC interrupt flag to be set
+ 1d4:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+ 1d8:	84 ff       	sbrs	r24, 4
+ 1da:	fc cf       	rjmp	.-8      	; 0x1d4 <main+0x12e>
+			ADCSRA |= (1 << ADIF); //unset the interrupt flag
+ 1dc:	ea e7       	ldi	r30, 0x7A	; 122
+ 1de:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e0:	80 81       	ld	r24, Z
+ 1e2:	80 61       	ori	r24, 0x10	; 16
+ 1e4:	80 83       	st	Z, r24
+			
+			if (ADCH < 64){ //if the value of the ADCH is less than 64 (first quadrant)
+ 1e6:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 1ea:	80 34       	cpi	r24, 0x40	; 64
+ 1ec:	28 f4       	brcc	.+10     	; 0x1f8 <main+0x152>
+				PORTB = (1 << PORTB0); //set the green light off
+ 1ee:	81 e0       	ldi	r24, 0x01	; 1
+ 1f0:	85 b9       	out	0x05, r24	; 5
+			_delay_ms(500); //small delay for each color
+			PORTD &= ~(0xF << PORTD2); //clear the LEDs while not messing with the other bits
+			_delay_ms(250); //small delay for the clear
+		}
+		while(!done){ //while not done, which is also set upon a reset
+			int colorValue = GREEN; //default value of green (ADCH 0 - 64)
+ 1f2:	e1 e0       	ldi	r30, 0x01	; 1
+ 1f4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1f6:	16 c0       	rjmp	.+44     	; 0x224 <main+0x17e>
+			ADCSRA |= (1 << ADIF); //unset the interrupt flag
+			
+			if (ADCH < 64){ //if the value of the ADCH is less than 64 (first quadrant)
+				PORTB = (1 << PORTB0); //set the green light off
+			} //color value is default green
+			else if (ADCH < 128){ //if the value of the ADCH is between 64 and 128 (second quadrant)
+ 1f8:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 1fc:	88 23       	and	r24, r24
+ 1fe:	2c f0       	brlt	.+10     	; 0x20a <main+0x164>
+				colorValue = BLUE; //set the color value to blue
+				PORTB = (1 << PORTB1); //turn on the blue light
+ 200:	82 e0       	ldi	r24, 0x02	; 2
+ 202:	85 b9       	out	0x05, r24	; 5
+			
+			if (ADCH < 64){ //if the value of the ADCH is less than 64 (first quadrant)
+				PORTB = (1 << PORTB0); //set the green light off
+			} //color value is default green
+			else if (ADCH < 128){ //if the value of the ADCH is between 64 and 128 (second quadrant)
+				colorValue = BLUE; //set the color value to blue
+ 204:	e2 e0       	ldi	r30, 0x02	; 2
+ 206:	f0 e0       	ldi	r31, 0x00	; 0
+ 208:	0d c0       	rjmp	.+26     	; 0x224 <main+0x17e>
+				PORTB = (1 << PORTB1); //turn on the blue light
+			}
+			else if (ADCH < 192){ //if the value of the ADCH is between 128 and 192 (third quadrant)
+ 20a:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 20e:	80 3c       	cpi	r24, 0xC0	; 192
+ 210:	28 f4       	brcc	.+10     	; 0x21c <main+0x176>
+				colorValue = YELLOW; //set the color value to yellow
+				PORTB = (1 << PORTB2); //turn on the yellow light
+ 212:	84 e0       	ldi	r24, 0x04	; 4
+ 214:	85 b9       	out	0x05, r24	; 5
+			else if (ADCH < 128){ //if the value of the ADCH is between 64 and 128 (second quadrant)
+				colorValue = BLUE; //set the color value to blue
+				PORTB = (1 << PORTB1); //turn on the blue light
+			}
+			else if (ADCH < 192){ //if the value of the ADCH is between 128 and 192 (third quadrant)
+				colorValue = YELLOW; //set the color value to yellow
+ 216:	e4 e0       	ldi	r30, 0x04	; 4
+ 218:	f0 e0       	ldi	r31, 0x00	; 0
+ 21a:	04 c0       	rjmp	.+8      	; 0x224 <main+0x17e>
+				PORTB = (1 << PORTB2); //turn on the yellow light
+			}
+			else{ //if the value of the ADCH is between 192 and 256 (fourth quadrant)
+				colorValue = RED; //set the color value to red
+				PORTB = (1 << PORTB3); //turn on the red light
+ 21c:	88 e0       	ldi	r24, 0x08	; 8
+ 21e:	85 b9       	out	0x05, r24	; 5
+			else if (ADCH < 192){ //if the value of the ADCH is between 128 and 192 (third quadrant)
+				colorValue = YELLOW; //set the color value to yellow
+				PORTB = (1 << PORTB2); //turn on the yellow light
+			}
+			else{ //if the value of the ADCH is between 192 and 256 (fourth quadrant)
+				colorValue = RED; //set the color value to red
+ 220:	e8 e0       	ldi	r30, 0x08	; 8
+ 222:	f0 e0       	ldi	r31, 0x00	; 0
+				PORTB = (1 << PORTB3); //turn on the red light
+			}
+	
+	
+			if (swChanged){ //if the button changed states
+ 224:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <swChanged>
+ 228:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <swChanged+0x1>
+ 22c:	89 2b       	or	r24, r25
+ 22e:	31 f1       	breq	.+76     	; 0x27c <main+0x1d6>
+				swChanged = 0; //unset the changed flag
+ 230:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <swChanged+0x1>
+ 234:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <swChanged>
+				if (debouncedSw == 0){ //if the button is up
+ 238:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <debouncedSw>
+ 23c:	90 91 13 01 	lds	r25, 0x0113	; 0x800113 <debouncedSw+0x1>
+ 240:	89 2b       	or	r24, r25
+ 242:	e1 f4       	brne	.+56     	; 0x27c <main+0x1d6>
+					if (colorValue != compPattern[playerCount]){ //if the color value does not match the color value of the computers pattern
+ 244:	a7 e0       	ldi	r26, 0x07	; 7
+ 246:	b0 e0       	ldi	r27, 0x00	; 0
+ 248:	ac 0f       	add	r26, r28
+ 24a:	bd 1f       	adc	r27, r29
+ 24c:	a2 0f       	add	r26, r18
+ 24e:	b3 1f       	adc	r27, r19
+ 250:	8c 91       	ld	r24, X
+ 252:	90 e0       	ldi	r25, 0x00	; 0
+ 254:	e8 17       	cp	r30, r24
+ 256:	f9 07       	cpc	r31, r25
+ 258:	79 f0       	breq	.+30     	; 0x278 <main+0x1d2>
+						playTone = 1; //set the playTone flag
+ 25a:	81 e0       	ldi	r24, 0x01	; 1
+ 25c:	90 e0       	ldi	r25, 0x00	; 0
+ 25e:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <playTone+0x1>
+ 262:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <playTone>
+						TCNT0 = 0; //reset the timer
+ 266:	16 bc       	out	0x26, r1	; 38
+						while(!toneDone); //play the tone
+ 268:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <__data_end>
+ 26c:	90 91 0d 01 	lds	r25, 0x010D	; 0x80010d <__data_end+0x1>
+ 270:	89 2b       	or	r24, r25
+ 272:	d1 f3       	breq	.-12     	; 0x268 <main+0x1c2>
+						reset = 1;
+ 274:	61 e0       	ldi	r22, 0x01	; 1
+ 276:	70 e0       	ldi	r23, 0x00	; 0
+					}
+					playerCount++; //increment the player count
+ 278:	2f 5f       	subi	r18, 0xFF	; 255
+ 27a:	3f 4f       	sbci	r19, 0xFF	; 255
+				} //end of if (!debouncedSw)
+			} //end of if(swChanged)
+			
+		if (reset){
+ 27c:	61 15       	cp	r22, r1
+ 27e:	71 05       	cpc	r23, r1
+ 280:	51 f4       	brne	.+20     	; 0x296 <main+0x1f0>
+ 282:	18 c0       	rjmp	.+48     	; 0x2b4 <main+0x20e>
+			for (int i = 0; i < numColor; i++){
+				compPattern[i] = 0;
+ 284:	e7 e0       	ldi	r30, 0x07	; 7
+ 286:	f0 e0       	ldi	r31, 0x00	; 0
+ 288:	ec 0f       	add	r30, r28
+ 28a:	fd 1f       	adc	r31, r29
+ 28c:	e8 0f       	add	r30, r24
+ 28e:	f9 1f       	adc	r31, r25
+ 290:	10 82       	st	Z, r1
+					playerCount++; //increment the player count
+				} //end of if (!debouncedSw)
+			} //end of if(swChanged)
+			
+		if (reset){
+			for (int i = 0; i < numColor; i++){
+ 292:	01 96       	adiw	r24, 0x01	; 1
+ 294:	02 c0       	rjmp	.+4      	; 0x29a <main+0x1f4>
+ 296:	80 e0       	ldi	r24, 0x00	; 0
+ 298:	90 e0       	ldi	r25, 0x00	; 0
+ 29a:	20 91 03 01 	lds	r18, 0x0103	; 0x800103 <numColor>
+ 29e:	30 91 04 01 	lds	r19, 0x0104	; 0x800104 <numColor+0x1>
+ 2a2:	82 17       	cp	r24, r18
+ 2a4:	93 07       	cpc	r25, r19
+ 2a6:	74 f3       	brlt	.-36     	; 0x284 <main+0x1de>
+				compPattern[i] = 0;
+			}
+			numColor = 0; //numColor incremented after while loop
+ 2a8:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <numColor+0x1>
+ 2ac:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <numColor>
+			playerCount = 0; //reset the player count
+ 2b0:	20 e0       	ldi	r18, 0x00	; 0
+ 2b2:	30 e0       	ldi	r19, 0x00	; 0
+			
+		}
+		if (numColor == playerCount){ //if they are the same
+ 2b4:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <numColor>
+ 2b8:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <numColor+0x1>
+ 2bc:	28 17       	cp	r18, r24
+ 2be:	39 07       	cpc	r19, r25
+ 2c0:	11 f4       	brne	.+4      	; 0x2c6 <main+0x220>
+			done = 1; //set the done flag
+ 2c2:	41 e0       	ldi	r20, 0x01	; 1
+ 2c4:	50 e0       	ldi	r21, 0x00	; 0
+			PORTD |= (compPattern[i] << PORTD2); //display the corresponding LED with the pattern
+			_delay_ms(500); //small delay for each color
+			PORTD &= ~(0xF << PORTD2); //clear the LEDs while not messing with the other bits
+			_delay_ms(250); //small delay for the clear
+		}
+		while(!done){ //while not done, which is also set upon a reset
+ 2c6:	41 15       	cp	r20, r1
+ 2c8:	51 05       	cpc	r21, r1
+ 2ca:	09 f4       	brne	.+2      	; 0x2ce <main+0x228>
+ 2cc:	83 cf       	rjmp	.-250    	; 0x1d4 <main+0x12e>
+		if (numColor == playerCount){ //if they are the same
+			done = 1; //set the done flag
+		}
+		} //end of while(!reset && numColors != playerCount)
+		
+	numColor++; //increment the number of colors
+ 2ce:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <numColor>
+ 2d2:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <numColor+0x1>
+ 2d6:	01 96       	adiw	r24, 0x01	; 1
+ 2d8:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <numColor+0x1>
+ 2dc:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <numColor>
+	
+	}//end of while(1)
+ 2e0:	1c cf       	rjmp	.-456    	; 0x11a <main+0x74>
+
+000002e2 <__vector_16>:
+/*
+	The interrupt service routine for when the timer overflows will be used for a button debounce.
+	It is passed the Timer0 overflow vector, and returns nothing. This process is initiated anytime
+	the timer overflows.
+*/
+ISR(TIMER0_OVF_vect){	
+ 2e2:	1f 92       	push	r1
+ 2e4:	0f 92       	push	r0
+ 2e6:	0f b6       	in	r0, 0x3f	; 63
+ 2e8:	0f 92       	push	r0
+ 2ea:	11 24       	eor	r1, r1
+ 2ec:	2f 93       	push	r18
+ 2ee:	3f 93       	push	r19
+ 2f0:	8f 93       	push	r24
+ 2f2:	9f 93       	push	r25
+	static uint8_t currSw; //state of the switch
+	static uint8_t count = COUNT_VAL; //counting overflows for a debounce
+	
+	
+	currSw = !!(PIND & (1 << PIND6)); //value of the buttons pin
+ 2f4:	29 b1       	in	r18, 0x09	; 9
+	
+	if (currSw == debouncedSw){ //if the state of the switch has not changed
+ 2f6:	26 fb       	bst	r18, 6
+ 2f8:	88 27       	eor	r24, r24
+ 2fa:	80 f9       	bld	r24, 0
+ 2fc:	90 e0       	ldi	r25, 0x00	; 0
+ 2fe:	20 91 12 01 	lds	r18, 0x0112	; 0x800112 <debouncedSw>
+ 302:	30 91 13 01 	lds	r19, 0x0113	; 0x800113 <debouncedSw+0x1>
+ 306:	82 17       	cp	r24, r18
+ 308:	93 07       	cpc	r25, r19
+ 30a:	21 f4       	brne	.+8      	; 0x314 <__vector_16+0x32>
+		count = COUNT_VAL; //reset the count
+ 30c:	23 e0       	ldi	r18, 0x03	; 3
+ 30e:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 312:	05 c0       	rjmp	.+10     	; 0x31e <__vector_16+0x3c>
+	}
+	else {
+		count--; //otherwise, decrement the count
+ 314:	20 91 00 01 	lds	r18, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 318:	21 50       	subi	r18, 0x01	; 1
+ 31a:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <__DATA_REGION_ORIGIN__>
+	}
+	
+	if (count == 0) { //if the count hits 0
+ 31e:	20 91 00 01 	lds	r18, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 322:	21 11       	cpse	r18, r1
+ 324:	0d c0       	rjmp	.+26     	; 0x340 <__vector_16+0x5e>
+		debouncedSw = currSw; //debounced switch shares the value of the current switch
+ 326:	90 93 13 01 	sts	0x0113, r25	; 0x800113 <debouncedSw+0x1>
+ 32a:	80 93 12 01 	sts	0x0112, r24	; 0x800112 <debouncedSw>
+		swChanged = 1; //set the changed flag
+ 32e:	81 e0       	ldi	r24, 0x01	; 1
+ 330:	90 e0       	ldi	r25, 0x00	; 0
+ 332:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <swChanged+0x1>
+ 336:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <swChanged>
+		count = COUNT_VAL; //reset the count
+ 33a:	83 e0       	ldi	r24, 0x03	; 3
+ 33c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+	}
+}
+ 340:	9f 91       	pop	r25
+ 342:	8f 91       	pop	r24
+ 344:	3f 91       	pop	r19
+ 346:	2f 91       	pop	r18
+ 348:	0f 90       	pop	r0
+ 34a:	0f be       	out	0x3f, r0	; 63
+ 34c:	0f 90       	pop	r0
+ 34e:	1f 90       	pop	r1
+ 350:	18 95       	reti
+
+00000352 <__vector_14>:
+
+
+/*
+	The interrupt service routine for timer 0 will play a note, and returns nothing.
+*/
+ISR(TIMER0_COMPA_vect){
+ 352:	1f 92       	push	r1
+ 354:	0f 92       	push	r0
+ 356:	0f b6       	in	r0, 0x3f	; 63
+ 358:	0f 92       	push	r0
+ 35a:	11 24       	eor	r1, r1
+ 35c:	8f 93       	push	r24
+ 35e:	9f 93       	push	r25
+	if(playTone){ //if the tone is to be played
+ 360:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <playTone>
+ 364:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <playTone+0x1>
+ 368:	89 2b       	or	r24, r25
+ 36a:	11 f0       	breq	.+4      	; 0x370 <__vector_14+0x1e>
+		PIND = (1 << PIND7); //toggle the pin of the piezzo buzzer
+ 36c:	80 e8       	ldi	r24, 0x80	; 128
+ 36e:	89 b9       	out	0x09, r24	; 9
+	}
+
+	duration--; //subtract one from the duration
+ 370:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <duration>
+ 374:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <duration+0x1>
+ 378:	01 97       	sbiw	r24, 0x01	; 1
+ 37a:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <duration+0x1>
+ 37e:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <duration>
+	if (duration <= 0){ //if it is done
+ 382:	18 16       	cp	r1, r24
+ 384:	19 06       	cpc	r1, r25
+ 386:	84 f0       	brlt	.+32     	; 0x3a8 <__vector_14+0x56>
+		toneDone = 1; //flag the toneDone
+ 388:	81 e0       	ldi	r24, 0x01	; 1
+ 38a:	90 e0       	ldi	r25, 0x00	; 0
+ 38c:	90 93 0d 01 	sts	0x010D, r25	; 0x80010d <__data_end+0x1>
+ 390:	80 93 0c 01 	sts	0x010C, r24	; 0x80010c <__data_end>
+		duration = 200; //reset duration
+ 394:	88 ec       	ldi	r24, 0xC8	; 200
+ 396:	90 e0       	ldi	r25, 0x00	; 0
+ 398:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <duration+0x1>
+ 39c:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <duration>
+		playTone = 0; //mark the 
+ 3a0:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <playTone+0x1>
+ 3a4:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <playTone>
+	}
+ 3a8:	9f 91       	pop	r25
+ 3aa:	8f 91       	pop	r24
+ 3ac:	0f 90       	pop	r0
+ 3ae:	0f be       	out	0x3f, r0	; 63
+ 3b0:	0f 90       	pop	r0
+ 3b2:	1f 90       	pop	r1
+ 3b4:	18 95       	reti
+
+000003b6 <__divmodhi4>:
+ 3b6:	97 fb       	bst	r25, 7
+ 3b8:	07 2e       	mov	r0, r23
+ 3ba:	16 f4       	brtc	.+4      	; 0x3c0 <__divmodhi4+0xa>
+ 3bc:	00 94       	com	r0
+ 3be:	07 d0       	rcall	.+14     	; 0x3ce <__divmodhi4_neg1>
+ 3c0:	77 fd       	sbrc	r23, 7
+ 3c2:	09 d0       	rcall	.+18     	; 0x3d6 <__divmodhi4_neg2>
+ 3c4:	0e 94 ef 01 	call	0x3de	; 0x3de <__udivmodhi4>
+ 3c8:	07 fc       	sbrc	r0, 7
+ 3ca:	05 d0       	rcall	.+10     	; 0x3d6 <__divmodhi4_neg2>
+ 3cc:	3e f4       	brtc	.+14     	; 0x3dc <__divmodhi4_exit>
+
+000003ce <__divmodhi4_neg1>:
+ 3ce:	90 95       	com	r25
+ 3d0:	81 95       	neg	r24
+ 3d2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 3d4:	08 95       	ret
+
+000003d6 <__divmodhi4_neg2>:
+ 3d6:	70 95       	com	r23
+ 3d8:	61 95       	neg	r22
+ 3da:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000003dc <__divmodhi4_exit>:
+ 3dc:	08 95       	ret
+
+000003de <__udivmodhi4>:
+ 3de:	aa 1b       	sub	r26, r26
+ 3e0:	bb 1b       	sub	r27, r27
+ 3e2:	51 e1       	ldi	r21, 0x11	; 17
+ 3e4:	07 c0       	rjmp	.+14     	; 0x3f4 <__udivmodhi4_ep>
+
+000003e6 <__udivmodhi4_loop>:
+ 3e6:	aa 1f       	adc	r26, r26
+ 3e8:	bb 1f       	adc	r27, r27
+ 3ea:	a6 17       	cp	r26, r22
+ 3ec:	b7 07       	cpc	r27, r23
+ 3ee:	10 f0       	brcs	.+4      	; 0x3f4 <__udivmodhi4_ep>
+ 3f0:	a6 1b       	sub	r26, r22
+ 3f2:	b7 0b       	sbc	r27, r23
+
+000003f4 <__udivmodhi4_ep>:
+ 3f4:	88 1f       	adc	r24, r24
+ 3f6:	99 1f       	adc	r25, r25
+ 3f8:	5a 95       	dec	r21
+ 3fa:	a9 f7       	brne	.-22     	; 0x3e6 <__udivmodhi4_loop>
+ 3fc:	80 95       	com	r24
+ 3fe:	90 95       	com	r25
+ 400:	bc 01       	movw	r22, r24
+ 402:	cd 01       	movw	r24, r26
+ 404:	08 95       	ret
+
+00000406 <_exit>:
+ 406:	f8 94       	cli
+
+00000408 <__stop_program>:
+ 408:	ff cf       	rjmp	.-2      	; 0x408 <__stop_program>
